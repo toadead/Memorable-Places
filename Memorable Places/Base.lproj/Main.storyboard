@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="O84-5e-reT">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <scenes>
+        <!--My Places-->
+        <scene sceneID="TLf-k9-GFc">
+            <objects>
+                <tableViewController id="WCe-hb-sbJ" customClass="MyPlacesTableViewController" customModule="Memorable_Places" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="EBa-RF-lzf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="GZ3-XS-hAK">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GZ3-XS-hAK" id="Eh9-ge-8Bt">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="WCe-hb-sbJ" id="XKj-q7-q5D"/>
+                            <outlet property="delegate" destination="WCe-hb-sbJ" id="K7x-6Z-6VR"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="My Places" id="27H-VE-6h7">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="K3B-ct-8Wm">
+                            <connections>
+                                <action selector="editPressed:" destination="WCe-hb-sbJ" id="XAb-3D-TV9"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="xzr-vQ-ANi">
+                            <connections>
+                                <segue destination="KMS-Rp-aEI" kind="show" identifier="addPlace" id="va9-Fq-1tf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="KMS-Rp-aEI" kind="show" identifier="goToPlace" id="YeZ-lW-fda"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lg2-g1-X2g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="644" y="184"/>
+        </scene>
+        <!--My Map-->
+        <scene sceneID="GEp-Ee-0d8">
+            <objects>
+                <viewController id="KMS-Rp-aEI" customClass="ViewController" customModule="Memorable_Places" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ft1-DU-Xx5"/>
+                        <viewControllerLayoutGuide type="bottom" id="C5i-9l-0Sh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="f0M-ui-WOc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ATq-44-HAu">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outlet property="delegate" destination="KMS-Rp-aEI" id="RTn-zj-sI3"/>
+                                    <outletCollection property="gestureRecognizers" destination="ol6-KL-JEg" appends="YES" id="f8M-c5-4dN"/>
+                                </connections>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="ATq-44-HAu" secondAttribute="bottom" id="cTn-ph-0FN"/>
+                            <constraint firstItem="ATq-44-HAu" firstAttribute="leading" secondItem="f0M-ui-WOc" secondAttribute="leading" id="j8i-Uo-kPV"/>
+                            <constraint firstItem="ATq-44-HAu" firstAttribute="top" secondItem="ft1-DU-Xx5" secondAttribute="bottom" id="rp7-J4-7ap"/>
+                            <constraint firstAttribute="trailing" secondItem="ATq-44-HAu" secondAttribute="trailing" id="vNy-aG-GWG"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="My Map" id="0MB-er-LFp">
+                        <barButtonItem key="rightBarButtonItem" title="Find Me" id="cAx-VN-L2q">
+                            <connections>
+                                <action selector="findMePressed:" destination="KMS-Rp-aEI" id="1oq-IJ-e3Q"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="mapView" destination="ATq-44-HAu" id="Kwg-5y-KEd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZDY-Lv-HOW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="ol6-KL-JEg">
+                    <connections>
+                        <action selector="pressedLongOnMap:" destination="KMS-Rp-aEI" id="zRt-zf-u7y"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1062" y="184"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bf4-hh-N08">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="O84-5e-reT" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uMY-Lg-3vu">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="WCe-hb-sbJ" kind="relationship" relationship="rootViewController" id="v0u-3T-g7G"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rBi-M4-O8R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="220" y="184"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="va9-Fq-1tf"/>
+    </inferredMetricsTieBreakers>
+</document>
